@@ -1,0 +1,4 @@
+interface:
+  display_name: "IP 表情包工作流"
+  short_description: "建立原创 IP，制作并质检表情、赞赏图片及微信投稿素材包"
+  default_prompt: "Use $create-ip-sticker-pack to turn my reference images into a consistent original IP and a WeChat-ready sticker submission package."
