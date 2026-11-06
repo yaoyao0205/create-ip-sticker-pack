@@ -22,7 +22,7 @@ git clone https://github.com/yaoyao0205/create-ip-sticker-pack.git \
   ~/.codex/skills/create-ip-sticker-pack
 ```
 
-本仓库当前为私有仓库，克隆前需要具有访问权限并完成 GitHub 身份验证。
+本仓库公开可访问，克隆无需 GitHub 登录。安装后，在新对话中请求制作表情包；若未自动触发，可明确指定使用 `create-ip-sticker-pack` Skill。
 
 如果使用其他 Agent，将仓库放入该环境支持的 Skill 目录，并确认它能够读取 `SKILL.md`。
 
@@ -67,9 +67,20 @@ git clone https://github.com/yaoyao0205/create-ip-sticker-pack.git \
 
 ## 脚本使用
 
+以下命令均在本仓库根目录执行；素材路径按实际项目位置替换。
+
 ### 添加文字
 
-准备 UTF-8 TSV，包含 `filename`、`caption` 和可选旋转角度；文字内换行写成 `\n`。具体字段与排版要求见 Skill 和脚本。
+准备 UTF-8 TSV，每行依次为文件名、文案和可选旋转角度，列之间使用真正的 Tab。**不要添加表头**：脚本会把表头当作图片文件名。文字内换行写成字面量 `\n`，旋转角度省略时为 0。
+
+例如下面两行（列之间为 Tab）：
+
+```tsv
+01-hello.png	你好呀	0
+02-thanks.png	谢谢\n收到啦	-5
+```
+
+输入使用 PNG 母版。脚本内置橘色文字、深色描边、白色外圈和顶部排版；如需其他风格，需调整脚本并检查长文案是否裁切。
 
 ```bash
 swift scripts/compose_text.swift \
@@ -84,6 +95,8 @@ swift scripts/compose_text.swift \
 bash scripts/export_wechat_pack.sh \
   stickers/masters-text stickers/export-v01
 ```
+
+导出生成 `main-240/`（240×240 GIF）、`thumb-120/`（120×120 PNG）、`overview.png` 和 `wechat-upload-kit.zip`。主图 GIF 是由静态母版转换而来，不代表生成了动画。
 
 导出时保持图片比例并补齐画布。重复或缺失编号会被拦截；已有导出不会被覆盖，请为新版本使用新的目录。检查失败时不生成新的上传 ZIP。
 
