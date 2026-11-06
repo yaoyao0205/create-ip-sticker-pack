@@ -1,4 +1,4 @@
-# IP 表情包制作 Skill
+# Yaoyao IP 表情包制作 Skill
 
 从人物、宠物、物品或产品的参考图出发，建立一致的原创 IP，制作静态表情包，并导出、检查微信表情提交素材。
 
@@ -18,7 +18,7 @@
 将本仓库克隆到 Codex 的 skills 目录：
 
 ```bash
-git clone https://github.com/yaoyao0205/create-ip-sticker-pack.git \
+git clone https://github.com/yaoyao0205/yaoyao-create-ip-sticker-pack.git \
   ~/.codex/skills/create-ip-sticker-pack
 ```
 
